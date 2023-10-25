@@ -24,7 +24,7 @@ export default defineConfig({
       insertTypesEntry: true,
     }),
   ],
-  build: {
+  _build: {
     lib: {
       entry: resolve(__dirname, "src/index.tsx"),
       name: "react-voice-visualizer",
