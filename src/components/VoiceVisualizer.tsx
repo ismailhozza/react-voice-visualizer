@@ -173,6 +173,8 @@ const VoiceVisualizer = forwardRef<Ref, VoiceVisualizerProps>(
     const debouncedOnResize = useDebounce(onResize);
 
     useEffect(() => {
+      console.log("useEffect1");
+
       onResize();
 
       const handleResize = () => {
@@ -201,6 +203,8 @@ const VoiceVisualizer = forwardRef<Ref, VoiceVisualizerProps>(
       if (!canvasRef.current) return;
 
       if (indexSpeedRef.current >= formattedSpeed || !audioData.length) {
+        console.log("useLayoutEffect");
+
         indexSpeedRef.current = 0;
         drawByLiveStream({
           audioData,
@@ -238,6 +242,7 @@ const VoiceVisualizer = forwardRef<Ref, VoiceVisualizerProps>(
 
     useEffect(() => {
       if (!isAvailableRecordedAudio) return;
+      console.log("useEffect2");
 
       if (isRecordedCanvasHovered) {
         canvasRef.current?.addEventListener("mouseleave", hideTimeIndicator);
@@ -270,6 +275,8 @@ const VoiceVisualizer = forwardRef<Ref, VoiceVisualizerProps>(
       ) {
         return;
       }
+
+      console.log("useEffect3");
 
       if (onlyRecording) {
         clearCanvas();
@@ -318,6 +325,8 @@ const VoiceVisualizer = forwardRef<Ref, VoiceVisualizerProps>(
       )
         return;
 
+      console.log("useEffect4");
+
       if (isCleared) {
         setBarsData([]);
         return;
@@ -348,6 +357,8 @@ const VoiceVisualizer = forwardRef<Ref, VoiceVisualizerProps>(
 
     useEffect(() => {
       if (isProcessingRecordedAudio && canvasRef.current) {
+        console.log("useEffect5");
+
         initialCanvasSetup({
           canvas: canvasRef.current,
           backgroundColor,
